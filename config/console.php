@@ -13,7 +13,10 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
-
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['未登录用户'],//指定默认规则为 '未登录用户'
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

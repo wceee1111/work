@@ -8,11 +8,22 @@ $config = [
     'language'=>'zh-CN',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+            'layout' => 'left-menu',
+        ],
+        //......
+    ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@mdm/admin' => '@vendor/mdmsoft/yii2-admin-master',
     ],
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'wce7758595',
@@ -53,6 +64,14 @@ $config = [
             ],
         ],
         'db' => $db,
+    ],
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            //这里是允许访问的action，不受权限控制
+            //controller/action
+            '*',
+        ]
     ],
     'params' => $params,
 ];

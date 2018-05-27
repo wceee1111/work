@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=>'raw',
                 'value'=> function($data){
                     //超链接
-                    return Html::a($data->SurveyName, ['question/index', 'id' => $data->SurveyInfoId]);
+                    return Html::a($data->SurveyName, ['useranswer/index', 'id' => $data->SurveyInfoId]);
                 }
             ],
             [

@@ -11,6 +11,9 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@mdm/admin' => '@vendor/mdmsoft/yii2-admin-master',//权限管理
+        '@dmstr'   => '@vendor/dmstr/yii2-adminlte-asset',//adminnlte美化控件
+        '@rmrevin/yii/fontawesome'   => '@vendor/rmrevin/yii2-fontawesome',//美化控件图片库
     ],
     'components' => [
         'authManager' => [

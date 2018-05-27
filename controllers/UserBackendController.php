@@ -42,13 +42,14 @@ class UserbackendController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             // 添加完用户之后，我们跳回到index操作即列表页
             return $this->redirect(['index']);
+        }else{
+            return $this->renderAjax('signup', [
+                'model' => $model,
+            ]);
         }
 
         // 下面这一段是我们刚刚分析的第一个小问题的实现
         // 渲染添加新用户的表单
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
     }
 
 

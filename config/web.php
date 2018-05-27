@@ -11,14 +11,16 @@ $config = [
     'modules' => [
         'admin' => [
             'class' => 'mdm\admin\Module',
-            'layout' => 'left-menu',
+            //'layout' => 'left-menu',
         ],
         //......
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-        '@mdm/admin' => '@vendor/mdmsoft/yii2-admin-master',
+        '@mdm/admin' => '@vendor/mdmsoft/yii2-admin-master',//权限管理
+        '@dmstr'   => '@vendor/dmstr/yii2-adminlte-asset',//adminnlte美化控件
+        '@rmrevin/yii/fontawesome'   => '@vendor/rmrevin/yii2-fontawesome',//美化控件图片库
     ],
     'components' => [
         'authManager' => [
@@ -70,7 +72,12 @@ $config = [
         'allowActions' => [
             //这里是允许访问的action，不受权限控制
             //controller/action
-            '*',
+            //'*',
+            'site/*',
+            'survey-info/indexl',
+            'survey-info/indexs',
+            'userbackend/signup',
+
         ]
     ],
     'params' => $params,

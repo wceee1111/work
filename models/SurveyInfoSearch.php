@@ -104,4 +104,37 @@ class SurveyInfoSearch extends SurveyInfo
 
         return $dataProvider;
     }
+
+    public function Lsearch($params,$name)
+    {
+        $query = SurveyInfo::find()->where(["like","SurveyName",$name]);
+
+        // add conditions that should always apply here
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        // grid filtering conditions
+        $query->andFilterWhere([
+            'SurveyInfoId' => $this->SurveyInfoId,
+            'ColumnId' => $this->ColumnId,
+            'SurveyStarttime' => $this->SurveyStarttime,
+            'SurveyEndtime' => $this->SurveyEndtime,
+        ]);
+
+        $query->andFilterWhere(['like', 'SurveyName', $this->SurveyName])
+            ->andFilterWhere(['like', 'SurveyDescription', $this->SurveyDescription])
+            ->andFilterWhere(['like', 'auther', $this->auther]);
+
+        return $dataProvider;
+    }
 }

@@ -58,6 +58,18 @@ class SurveyInfoController extends Controller
         ]);
     }
 
+    public function actionIndexl($name)
+    {
+
+        $searchModel = new SurveyInfoSearch();
+        $dataProvider = $searchModel->Lsearch(Yii::$app->request->queryParams,$name);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
 
     /**
      * Displays a single SurveyInfo model.
